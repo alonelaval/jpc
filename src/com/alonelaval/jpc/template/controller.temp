@@ -1,0 +1,62 @@
+package ${pkg}.controller;
+
+import ${pkg}.common.page.Page;
+import ${pkg}.entity.biz.${name};
+import ${pkg}.entity.model.${name}Model;
+import ${pkg}.service.IBaseService;
+import ${pkg}.service.user.${name}Service;
+import ${pkg}.controller.AbstarctController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.constraints.NotNull;
+
+
+/**
+ * @author huawei
+ * @create 2018-07-29
+ **/
+@Controller
+@RequestMapping("invoice")
+public class ${name}Controller extends AbstractController {
+
+    @Autowired
+    ${name}Service ${name_low}Service;
+
+    @PostMapping("add")
+    public Object add(@Validated ${name}Model ${name_low}Model) throws Exception {
+       return  super.addBasic(${name_low}Model);
+    }
+
+    @PostMapping("update")
+    public Object update(@Validated ${name}Model ${name_low}Model,@NotNull(message = "ID不能为空！") Integer id) throws Exception {
+        return  super.updateBasic(${name_low}Model,id);
+    }
+
+    @PostMapping("list")
+    public Object list(${name}Model model, Page<${name}> page) throws Exception {
+        return  super.listBasic(model,page);
+    }
+
+    @PostMapping("/disable")
+    public Object disable(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
+        return  super.disableBasic(ids);
+    }
+    @PostMapping("/enable")
+    public Object enable(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
+        return  super.enableBasic(ids);
+    }
+    @PostMapping("/delete")
+    public Object delete(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
+        return  super.deleteBasic(ids);
+    }
+
+    @Override
+    protected IBaseService getBaseService() {
+        return ${name_low}Service;
+    }
+
+}

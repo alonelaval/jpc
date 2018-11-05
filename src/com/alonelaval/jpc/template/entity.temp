@@ -1,0 +1,29 @@
+package {{package_name}}.entity;
+
+import javax.persistence.*;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+{% for java_type in java_types %}
+import {{java_type}};  
+{% endfor %}
+
+/**
+ * @author huawei
+ * create by python
+ **/
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "{{table_name}}")
+public class {{clazz_name}} {
+
+{% for field in fields %}
+{{field|safe }}  
+{% endfor %}
+	
+}

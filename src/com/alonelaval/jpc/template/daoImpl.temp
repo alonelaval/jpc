@@ -1,0 +1,25 @@
+package ${pkg}.dao.impl;
+
+import ${pkg}.dao.AbstractBaseDao;
+import ${pkg}.dao.${name}Dao;
+import ${pkg}.repository.BaseRepository;
+import ${pkg}.repository.${name}Repository;
+import ${pkg}.entity.${name};
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+/**
+ * @author huawei
+ * @create 2018-07-08
+ **/
+@Component(value="${name_low}Dao")
+public class ${name}DaoImpl  extends AbstractBaseDao<${name},Integer> implements ${name}Dao{
+
+    @Autowired
+    ${name}Repository ${name_low}Repository;
+
+    @Override
+    protected BaseRepository<${name}, Integer> getBaseRepository() {
+        return ${name_low}Repository;
+    }
+}

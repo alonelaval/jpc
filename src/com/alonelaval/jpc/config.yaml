@@ -1,0 +1,37 @@
+db:
+    host: 127.0.0.1
+    port: 3306
+    user: root
+    password: root123
+    db_name: ycz-cornerstone
+    db_type: mysql
+    
+#过滤器
+filters:
+#为空默认都生成
+tables:
+    - tb_month_totality_statistics
+    - tb_week_totality_statistics
+    - tb_daily_totality_statistics
+    - tb_daily_org_totality_statistics
+    - tb_week_org_totality_statistics
+    - tb_month_org_totality_statistics
+#项目名称
+projectName: test
+#包名
+packageName: com.alonelaval
+
+#源码存放路径
+projectPath:
+#
+controllerPath:
+#
+servicePath:
+#
+repositoryPath:
+#
+modelPath:
+#
+entityPath:
+#
+dao_path:

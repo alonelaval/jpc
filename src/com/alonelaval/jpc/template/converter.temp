@@ -1,0 +1,26 @@
+package com.okycz.cornerstone.entity.converter;
+
+import com.okycz.cornerstone.entity.constants.${name};
+
+import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
+
+/**
+ * @author huawei
+ * @create 2018-07-28
+ **/
+@Converter(autoApply = true)
+public class ${name}Converter implements AttributeConverter<${name}, Integer> {
+    @Override
+    public Integer convertToDatabaseColumn(${name} attribute) {
+        return attribute.value();
+    }
+
+    @Override
+    public ${name} convertToEntityAttribute(Integer dbData) {
+    	if(dbData == null) {
+            return null;
+        }
+        return ${name}.valueOf(dbData);
+    }
+}

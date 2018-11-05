@@ -1,0 +1,13 @@
+package ${pkg}.dao.inter;
+
+import ${pkg}.dao.IBaseDao;
+import ${pkg}.entity.${name};
+
+/**
+ * @author huawei
+ * @create 2018-07-11
+ * create by python
+ **/
+public interface ${name}Dao  extends IBaseDao<${name},Integer> {
+
+}

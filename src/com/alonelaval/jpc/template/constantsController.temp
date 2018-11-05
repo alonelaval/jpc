@@ -1,0 +1,48 @@
+package com.okycz.cornerstone.web.controller;
+
+import com.okycz.common.entity.IEnum;
+import com.okycz.cornerstone.entity.base.JsonResult;
+
+{% for java_type in java_types %}
+import com.okycz.cornerstone.entity.constants.{{java_type}};  
+{% endfor %}
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @author huawei
+ * @create 2018-10-25
+ **/
+@Controller()
+@RequestMapping("/constants")
+public class ConstantsController {
+	
+{% for item in types %}
+  	@GetMapping("/{{item[1]}}")
+  	@ApiOperation(value="")
+    public Object get{{item[0]}}(){
+        Map<String,Object> datas = new HashMap<>(8);
+        datas.put("name",{{item[0]}}.typeName());
+        datas.put("data",getData({{item[0]}}.values()));
+        return ResponseEntity.ok().body(JsonResult.builder().data(datas).build());
+    }
+    
+{% endfor %}
+		
+	
+
+    private Map<String,String> getData(IEnum [] enums){
+        Map<String,String> datas = new HashMap<>(8);
+        for(IEnum iEnum :enums ){
+            datas.put(iEnum.value()+"",iEnum.desc());
+        }
+        return  datas;
+    }
+}

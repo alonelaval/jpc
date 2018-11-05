@@ -1,0 +1,42 @@
+package ${pkg}.servce.impl.${pkg};
+
+import ${pkg}.common.exception.ServiceException;
+import ${pkg}.dao.inter.IBaseDao;
+import ${pkg}.dao.inter.${name}Dao;
+import ${pkg}.entity.biz.User;
+import ${pkg}.servce.impl.AbstractBaseService;
+import ${pkg}service.${name}Service;
+import lombok.extern.slf4j.Slf4j;
+import ${pkg}.common.page.Page;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+/**
+ * @author huawei
+ * @create 2018-07-08
+ * create by python
+ **/
+@Service("${name_low}Service")
+@Slf4j
+@Transactional(rollbackFor = Exception.class)
+public class ${name}ServiceImpl extends AbstractBaseService<${name},Integer>  implements ${name}Service {
+    @Autowired
+    ${name}Dao ${name_low}Dao;
+    
+
+
+  	@Override
+    public Page<${name}> findByModelAndPage(Model model, Page<${name}> page) throws Exception {
+        ${name}Model ${name_low}Model = (${name}Model) model;
+        WhereBuilder builder = WhereBuilder.build();
+        return ${name_low}Dao.findAllByPredicateAndPage(builder.predicate(),page);
+    }
+    
+    @Override
+    protected IBaseDao<${name},Integer> getBaseDao() {
+        return ${name_low}Dao;
+    }
+}

@@ -1,0 +1,16 @@
+package ${pkg}.service;
+
+import ${pkg}.entity.${name};
+import ${pkg}.service.IBaseService;
+
+/**
+ * @author huawei
+ * @create 2018-07-08
+ * create by python
+ **/
+public interface ${name}Service  extends IBaseService<${name},Integer> {
+    default ${name} add${name}(${name} ${name_low}) throws Exception{
+    	return this.add(${name_low});
+    }
+
+}
