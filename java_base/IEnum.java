@@ -1,4 +1,4 @@
-package com.alonelaval.common
+package com.okycz.panasonic.base;
 
 /**
  * @author

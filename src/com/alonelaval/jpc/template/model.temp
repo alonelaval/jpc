@@ -1,5 +1,6 @@
-package com.okycz.cornerstone.model;
+package ${pkg}.model;
 
+import ${pkg}.base.Model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;

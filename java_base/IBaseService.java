@@ -1,7 +1,6 @@
-package com.alonelaval.service;
+package com.okycz.panasonic.base;
 
-import com.alonelaval.Page;
-import com.alonelaval.Model;
+
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -37,7 +36,7 @@ public interface IBaseService<T,PK> {
      */
     T update(T t)throws  Exception;
 
-    T update(Model model,PK pk)throws  Exception;
+    T update(Model model, PK pk)throws  Exception;
     /**
      * 删除
      * @param t
@@ -54,7 +53,7 @@ public interface IBaseService<T,PK> {
      */
     Optional<T> findById(PK pk)throws  Exception;
 
-    List<T> listAll(@Nullable  Model model)throws  Exception;
+    List<T> listAll(@Nullable Model model)throws  Exception;
     /***
      * 分页
      * @param model
@@ -62,7 +61,7 @@ public interface IBaseService<T,PK> {
      * @return
      * @throws Exception
      */
-    Page<T> findByModelAndPage(Model model,Page<T> page)throws Exception;
+    Page<T> findByModelAndPage(Model model, Page<T> page)throws Exception;
 
     /**
      * 禁用

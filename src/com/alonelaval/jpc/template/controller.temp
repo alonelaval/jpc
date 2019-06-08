@@ -1,11 +1,11 @@
 package ${pkg}.controller;
 
-import ${pkg}.common.page.Page;
-import ${pkg}.entity.biz.${name};
-import ${pkg}.entity.model.${name}Model;
-import ${pkg}.service.IBaseService;
-import ${pkg}.service.user.${name}Service;
-import ${pkg}.controller.AbstarctController;
+import ${pkg}.base.Page;
+import ${pkg}.entity.${name};
+import ${pkg}.model.${name}Model;
+import ${pkg}.base.IBaseService;
+import ${pkg}.service.inter.${name}Service;
+import ${pkg}.base.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  * @create 2018-07-29
  **/
 @Controller
-@RequestMapping("invoice")
+@RequestMapping("${name_low}")
 public class ${name}Controller extends AbstractController {
 
     @Autowired

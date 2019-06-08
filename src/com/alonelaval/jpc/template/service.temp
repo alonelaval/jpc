@@ -1,5 +1,6 @@
 package ${pkg}.service;
 
+
 import ${pkg}.entity.${name};
 import ${pkg}.service.IBaseService;
 

@@ -1,6 +1,5 @@
-package com.alonelaval.dao.repository.jpa.base;
+package com.okycz.panasonic.base;
 
-import com.alonelaval.common.page.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.NoRepositoryBean;
 

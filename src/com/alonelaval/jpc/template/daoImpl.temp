@@ -1,7 +1,7 @@
 package ${pkg}.dao.impl;
 
 import ${pkg}.dao.AbstractBaseDao;
-import ${pkg}.dao.${name}Dao;
+import ${pkg}.dao.inter.${name}Dao;
 import ${pkg}.repository.BaseRepository;
 import ${pkg}.repository.${name}Repository;
 import ${pkg}.entity.${name};

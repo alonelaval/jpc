@@ -1,6 +1,11 @@
-package com.alonelaval.dao;
+package com.okycz.panasonic.base;
 
 
+
+import com.google.common.collect.Lists;
+import com.okycz.panasonic.exception.DaoException;
+import com.querydsl.core.types.Predicate;
+import org.springframework.data.domain.Example;
 
 import java.util.List;
 import java.util.Optional;
@@ -102,9 +107,9 @@ public abstract class AbstractBaseDao<T extends IEntity, PK> implements IBaseDao
     }
 
     @Override
-    public void updateState(State state, List<Integer> ids) throws DaoException {
+    public void updateState(Status status, List<Integer> ids) throws DaoException {
         try {
-            getBaseRepository().updateState(state.value(),ids);
+            getBaseRepository().updateState(status.value(),ids);
         } catch (Exception e) {
             throw new DaoException(ExceptionType.DAO_EXCEPTION.value(), e.getMessage(), e);
         }

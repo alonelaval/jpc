@@ -1,4 +1,4 @@
-package com.alonelaval.dao.repository.jpa.base;
+package com.okycz.panasonic.base;
 
 
 import com.querydsl.core.types.Predicate;

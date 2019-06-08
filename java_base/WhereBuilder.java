@@ -1,6 +1,7 @@
-package com.alonelaval.dao.repository.jpa.base;
+package com.okycz.panasonic.base;
 
-import com.alonelaval.date.DateTimeUtils;
+import com.okycz.panasonic.common.DateTimeUtils;
+import com.okycz.panasonic.common.TimeUtils;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.*;

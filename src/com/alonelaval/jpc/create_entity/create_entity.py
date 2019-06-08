@@ -27,37 +27,38 @@ class CreateEntity(BaseCreate):
         return config.entity_path
        
     def create_file(self,file_path,class_name,package_name,template_name,class_file_name,table_name=None):
-        fields,java_types = self.cretea_entity_data(str(table_name))
+        fields,java_types,key_name = self.cretea_entity_data(str(table_name))
         template = env.get_template(template_name)
         content =  template.render({"package_name":package_name,
                          "table_name":table_name,
                          "fields":fields,
                          "clazz_name":class_name,
-                         "java_types":java_types})
+                         "java_types":java_types,
+                         "key_name":key_name})
         with open(file_path+"/"+class_name+".java","w") as f:
             f.write(content)
             
-    def get_column_info(self,table_name):
-        conn = Connection();
-        for column_info in conn.getData("desc %s"% table_name):
-            column_name = column_info[0]
-            column_type = column_info[1].split("(")[0]
-            is_pri = True if str(column_info[3]) =='PRI' else False 
-            yield column_name, column_type, is_pri
-                     
+
     def cretea_entity_data(self,table_name):
         fields =[]
         java_types=set()
-        for column_info in self.get_column_info(table_name):
-            column_name,column_type,is_pri = column_info
+        conn = Connection()
+        key_name = None
+        for column_info in conn.get_column_info(table_name):
+            column_name,column_type,is_pri,comment = column_info
+            column_name = column_name.lower()
             field_name = underline_to_camel(str(column_name),first_up=False)
+            if column_name == 'status' or column_name == 'create_time' or column_name == 'last_update_time':
+                continue
+            if is_pri:
+                key_name = field_name
             java_date_type = data_type_match(column_type)
-            field_detail,import_type = create_column_info(column_name,field_name,java_date_type,is_pri)
+            field_detail,import_type = create_column_info(column_name,field_name,java_date_type,is_pri,comment)
             fields.append(field_detail)
             if import_type is not None:
                 java_types.add(import_type)
                 
-        return (fields,java_types)   
+        return (fields,java_types,key_name)   
             
 
 

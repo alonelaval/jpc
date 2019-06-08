@@ -5,8 +5,9 @@ Created on 2018年7月31日
 @author: huawei
 '''
 
-def create_column_info(column_name,field_name,java_data_type,is_pri=False):
+def create_column_info(column_name,field_name,java_data_type,is_pri=False,comment=""):
     anno=''
+    comment ="    /** %s */\n" % comment
     if is_pri:
         anno = "    @Id \n    @GeneratedValue(strategy = GenerationType.IDENTITY) \n"
     anno += "    @Column(name = \"%s\")\n"%column_name
@@ -14,10 +15,10 @@ def create_column_info(column_name,field_name,java_data_type,is_pri=False):
     if java_data_type.find(".") >0:
         dType = java_data_type.split(".")[2]
         field = field % (dType,field_name)
-        return (anno+field,java_data_type)
+        return (comment+anno+field,java_data_type)
     else:
         field = field % (java_data_type,field_name)
-        return (anno+field,None)
+        return (comment+anno+field,None)
         
         
 if __name__ == "__main__":

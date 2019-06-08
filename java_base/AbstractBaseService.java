@@ -1,6 +1,9 @@
-package com.alonelaval;
+package com.okycz.panasonic.base;
 
 
+
+import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,22 +38,22 @@ public abstract class AbstractBaseService<T,PK> implements IBaseService<T,PK> {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void disable(List<Integer> ids) throws Exception {
-        updateState(State.DISABLED,ids);
+        updateState(Status.DISABLED,ids);
     }
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void enable(List<Integer> ids) throws Exception {
-        updateState(State.ENABLED,ids);
+        updateState(Status.ENABLED,ids);
     }
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void delete(List<Integer> ids) throws Exception {
-        updateState(State.DELETE,ids);
+        updateState(Status.DELETE,ids);
     }
 
-    private void updateState(State state, List<Integer> ids)throws  Exception{
+    private void updateState(Status status, List<Integer> ids)throws  Exception{
         if(Optional.ofNullable(ids).isPresent()){
-            getBaseDao().updateState(state,ids);
+            getBaseDao().updateState(status,ids);
         }
     }
 

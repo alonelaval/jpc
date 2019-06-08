@@ -1,4 +1,4 @@
-package com.alonelaval;
+package com.okycz.panasonic.base;
 
 
 
@@ -10,12 +10,11 @@ import java.time.LocalDateTime;
  **/
 public interface IEntity {
 
-//    void setId(String id);
 
     String getId();
 
-    IEnum getState();
-    void setState(IEnum state);
+    IEnum getStatus();
+    void setStatus(IEnum state);
     LocalDateTime getCreateTime();
     void setCreateTime(LocalDateTime localDate);
 

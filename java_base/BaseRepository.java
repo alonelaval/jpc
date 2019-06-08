@@ -1,6 +1,5 @@
-package com.alonelaval.repository.jpa.base;
+package com.okycz.panasonic.base;
 
-import com.alonelaval.Page;
 import com.querydsl.core.types.Predicate;
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,5 +18,5 @@ public interface BaseRepository<T, ID> extends JpaRepository<T, ID>,QuerydslPred
     Page<T> findAllByPage(Predicate predicate, Page page);
 
     @Modifying
-    void updateState(Integer state,List<Integer> ids);
+    void updateState(Integer state, List<Integer> ids);
 }

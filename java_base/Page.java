@@ -1,4 +1,4 @@
-package com.alonelaval;
+package com.okycz.panasonic.base;
 
 /**
  * @(#)Page.java

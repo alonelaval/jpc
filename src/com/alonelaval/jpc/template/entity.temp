@@ -1,9 +1,10 @@
 package {{package_name}}.entity;
 
+import {{package_name}}.base.AbstractEntity;
+import {{package_name}}.base.Status;
 import javax.persistence.*;
 import lombok.Builder;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 {% for java_type in java_types %}
@@ -20,10 +21,15 @@ import {{java_type}};
 @NoArgsConstructor
 @Entity
 @Table(name = "{{table_name}}")
-public class {{clazz_name}} {
+public class {{clazz_name}} extends AbstractEntity {
 
 {% for field in fields %}
 {{field|safe }}  
 {% endfor %}
-	
+
+ 	@Override
+    public String getId() {
+        return this.{{key_name}}.toString();
+    }
+    
 }

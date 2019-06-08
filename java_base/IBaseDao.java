@@ -1,6 +1,10 @@
-package com.alonelaval.dao;
+package com.okycz.panasonic.base;
 
 
+
+import com.okycz.panasonic.exception.DaoException;
+import com.querydsl.core.types.Predicate;
+import org.springframework.data.domain.Example;
 
 import java.util.List;
 import java.util.Optional;
@@ -78,11 +82,11 @@ public interface IBaseDao<T,PK> {
     Optional<T> findOne(Predicate predicate)throws DaoException;
     /***
      * 更新状态
-     * @param state
+     * @param status
      * @param ids
      * @throws DaoException
      */
-    void updateState(State state, List<Integer> ids) throws  DaoException;
+    void updateState(Status status, List<Integer> ids) throws  DaoException;
 
     /**
      * 查找所有

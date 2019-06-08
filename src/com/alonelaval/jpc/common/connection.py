@@ -36,7 +36,15 @@ class Connection():
         conn.commit()
         conn.close()
         return count
-     
+    
+    def get_column_info(self,table_name):
+        for column_info in self.getData("show FULL COLUMNS from  %s"% table_name):
+            column_name = column_info[0]
+            column_type = column_info[1].split("(")[0]
+            is_pri = True if str(column_info[4]) =='PRI' else False
+            comment = column_info[8]  
+            yield column_name, column_type, is_pri,comment
+                     
     def getCount(self,sql):
         self.debug( sql)
         conn = self.get_conn()

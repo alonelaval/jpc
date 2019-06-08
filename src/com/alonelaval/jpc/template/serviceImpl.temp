@@ -1,13 +1,11 @@
 package ${pkg}.servce.impl.${pkg};
 
-import ${pkg}.common.exception.ServiceException;
-import ${pkg}.dao.inter.IBaseDao;
+import ${pkg}.base.*;
 import ${pkg}.dao.inter.${name}Dao;
-import ${pkg}.entity.biz.User;
-import ${pkg}.servce.impl.AbstractBaseService;
-import ${pkg}service.${name}Service;
+import ${pkg}.entity.${name};
+import ${pkg}.model.${name}Model;
+import ${pkg}.service.inter.${name}Service;
 import lombok.extern.slf4j.Slf4j;
-import ${pkg}.common.page.Page;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

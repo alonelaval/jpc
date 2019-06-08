@@ -24,11 +24,11 @@ reload(sys)
 # sys.setdefaultencoding('utf8')
 
 creates=[ CreateEntity(),
-          CreateRepository(),
-          CreateDao(),
-          CreateModel(),
-          CreateController(),
-          CreateService()
+        CreateRepository(),
+        CreateDao(),
+        CreateModel(),
+        CreateController(),
+        CreateService()
          ]
 def prefix_filter(table_name):
     return table_name.replace("tb_","")
@@ -39,6 +39,14 @@ def get_table_names(table_name_filter=prefix_filter):
         table_name = str(table[0])
         class_name = underline_to_camel(table_name if table_name_filter is None else table_name_filter(table_name),first_up=True)
         yield str(table_name),str(class_name)
+        
+def get_primary_key(table_name):
+    conn = Connection()
+    for column_name, column_type, is_pri in conn.get_column_info(table_name):
+        if is_pri:
+            return column_name
+#         print column_name, column_type, is_pri
+    
         
 def bootstrap():
     config = config_instance
@@ -53,17 +61,25 @@ def bootstrap():
     table_name_iterator = get_table_names()
     table_names = []
     for table_name,class_name in table_name_iterator:
+        
+        
+#         if not table_name.startswith("view"):
+        
+#             primary_key = get_primary_key(table_name)
+#             primary_key = primary_key if primary_key is not None else "ID"
+#             print "alter table %s modify column %s int(11)  AUTO_INCREMENT; " % (table_name,primary_key) 
+#             print "alter table %s AUTO_INCREMENT=10000;" % table_name
         if need_create_tables :
             if table_name in need_create_tables:
                 table_names.append((table_name,class_name))
         else:
             table_names.append((table_name,class_name))
+    print table_names
     
     for create in creates:
         create.create(config,table_names)
+#     
     
-        
-        
 if __name__ == "__main__":
     bootstrap()
     
