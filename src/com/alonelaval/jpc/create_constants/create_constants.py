@@ -49,7 +49,7 @@ def create_constants_file(paths,ignores=None):
 if __name__ == '__main__':
 #     for line in read_constants("/Users/hua/workspace/ycz/cornerstone/entity/src/main/java/com/okycz/cornerstone/entity/constants",[]):
 #         print line
-    create_constants_file("/Users/hua/workspace/ycz/cornerstone/entity/src/main/java/com/okycz/cornerstone/entity/constants",["IEnum"])
+    create_constants_file("/Users/hua/workspace/ycz/panasonic/entity/src/main/java/com/okycz/panasonic/entity/constants",["IEnum"])
         
         
     

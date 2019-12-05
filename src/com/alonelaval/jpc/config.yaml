@@ -10,6 +10,8 @@ db:
 filters:
 #为空默认都生成
 tables:
+    - tb_user_product_auth
+    - tb_product_auth
 #项目名称
 projectName: panasonic 
 #包名
