@@ -7,7 +7,7 @@ import javax.persistence.Converter;
 
 /**
  * @author huawei
- * @create 2018-07-28
+ * @create 
  **/
 @Converter(autoApply = true)
 public class ${name}Converter implements AttributeConverter<${name}, Integer> {

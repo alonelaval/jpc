@@ -28,7 +28,7 @@ def create_repository_file(entity_name):
     
     
 if __name__ == '__main__':
-    for line in read_entity("/Users/hua/workspace/ycz/cornerstone/entity/src/main/java/com/okycz/cornerstone/entity/constants",["IEnum"]):
+    for line in read_entity("/Users/hua/workspace/ycz/panasonic/entity/src/main/java/com/okycz/panasonic/entity/constants",["IEnum"]):
         create_repository_file(line)
         
     

@@ -4,6 +4,8 @@ import ${pkg}.base.Model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * @author huawei
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 //@AllArgsConstructor
 @NoArgsConstructor
+@ApiModel("")
 public class ${name}Model implements Model {
   
 }

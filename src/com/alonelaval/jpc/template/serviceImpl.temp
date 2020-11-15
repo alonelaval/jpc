@@ -14,14 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author huawei
- * @create 2018-07-08
+ * @create 
  * create by python
  **/
 @Service("${name_low}Service")
 @Slf4j
 @Transactional(rollbackFor = Exception.class)
 public class ${name}ServiceImpl extends AbstractBaseService<${name},Integer>  implements ${name}Service {
-    @Autowired
+    @Resource
     ${name}Dao ${name_low}Dao;
     
 

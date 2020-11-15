@@ -11,49 +11,65 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import javax.validation.constraints.NotNull;
-
+import com.koal.common.JsonResult;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * @author huawei
- * @create 2018-07-29
+ * @create 
  **/
 @Controller
+@Api(value = "用户相关接口", description = "提供用户相关的 Rest API")
 @RequestMapping("${name_low}")
 public class ${name}Controller extends AbstractController {
 
-    @Autowired
+    @Resource
     ${name}Service ${name_low}Service;
 
     @PostMapping("add")
+    @ApiOperation(value="",response = JsonResult.class)
     public Object add(@Validated ${name}Model ${name_low}Model) throws Exception {
        return  super.addBasic(${name_low}Model);
     }
 
     @PostMapping("update")
+    @ApiOperation("",response = JsonResult.class)
     public Object update(@Validated ${name}Model ${name_low}Model,@NotNull(message = "ID不能为空！") Integer id) throws Exception {
         return  super.updateBasic(${name_low}Model,id);
     }
 
-    @PostMapping("list")
+    @GetMapping("list")
+    @ApiOperation("",response = JsonResult.class)
     public Object list(${name}Model model, Page<${name}> page) throws Exception {
         return  super.listBasic(model,page);
     }
 
-    @PostMapping("/disable")
+    @PostMapping("/disable",response = JsonResult.class)
+	@ApiOperation("")
     public Object disable(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
         return  super.disableBasic(ids);
     }
-    @PostMapping("/enable")
+    @PostMapping("/enable",response = JsonResult.class)
+    @ApiOperation("")
     public Object enable(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
         return  super.enableBasic(ids);
     }
-    @PostMapping("/delete")
+    @PostMapping("/delete",response = JsonResult.class)
+    @ApiOperation("")
     public Object delete(@NotNull(message = "ID不能为空!")  Integer ... ids)throws  Exception{
         return  super.deleteBasic(ids);
     }
-
+	
+	@GetMapping("/detail",response = JsonResult.class)
+	@ApiOperation("")
+    public Object detail(@Validated @NotNull(message = "id不能为空") Integer id) throws Exception {
+        return  super.response(JsonResult.builder().resultCode(ExceptionType.SUCCESS.value())
+                .data(${name_low}Service.findById(id)).build());
+    }
+	
     @Override
     protected IBaseService getBaseService() {
         return ${name_low}Service;

@@ -48,8 +48,8 @@ class CreateEntity(BaseCreate):
             column_name,column_type,is_pri,comment = column_info
             column_name = column_name.lower()
             field_name = underline_to_camel(str(column_name),first_up=False)
-            if column_name == 'status' or column_name == 'create_time' or column_name == 'last_update_time':
-                continue
+#             if column_name == 'status' or column_name == 'create_time' or column_name == 'last_update_time':
+#                 continue
             if is_pri:
                 key_name = field_name
             java_date_type = data_type_match(column_type)

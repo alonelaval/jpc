@@ -4,18 +4,17 @@ db:
     user: root
     password: root123
     db_type: mysql
-    db_name: panasonic
+    db_name: kiam_message
     
 #过滤器
 filters:
 #为空默认都生成
 tables:
-    - tb_user_product_auth
-    - tb_product_auth
+    - tb_email_log
 #项目名称
-projectName: panasonic 
+projectName: message-service 
 #包名
-packageName: com.okycz.panasonic
+packageName: com.koal.message
 
 #源码存放路径
 projectPath:

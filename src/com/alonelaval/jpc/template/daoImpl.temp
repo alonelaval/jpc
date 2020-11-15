@@ -1,9 +1,9 @@
 package ${pkg}.dao.impl;
 
 import ${pkg}.dao.AbstractBaseDao;
-import ${pkg}.dao.inter.${name}Dao;
 import ${pkg}.repository.BaseRepository;
 import ${pkg}.repository.${name}Repository;
+import ${pkg}.dao.inter.${name}Dao;
 import ${pkg}.entity.${name};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Component(value="${name_low}Dao")
 public class ${name}DaoImpl  extends AbstractBaseDao<${name},Integer> implements ${name}Dao{
 
-    @Autowired
+    @Resource
     ${name}Repository ${name_low}Repository;
 
     @Override

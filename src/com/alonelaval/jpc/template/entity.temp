@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 {% for java_type in java_types %}
 import {{java_type}};  
 {% endfor %}
@@ -21,6 +23,7 @@ import {{java_type}};
 @NoArgsConstructor
 @Entity
 @Table(name = "{{table_name}}")
+@ApiModel("实体")
 public class {{clazz_name}} extends AbstractEntity {
 
 {% for field in fields %}
